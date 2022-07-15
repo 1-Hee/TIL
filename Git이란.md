@@ -75,7 +75,7 @@ git init은 git에 의해 버전관리를 받지 않는 local directory 중에�
 git add는 working directory에 있는 파일이나 폴더를 git repository에 올리기 전 단계인
 staging area에 올려 놓는 명령어이다. 
 
-![S3](\source\0714s3.png)
+![S3](.\source\0714s3.png)
 
 `왜 바로 git repository에 올리지 않는 것일까?`
 
