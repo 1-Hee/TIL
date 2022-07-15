@@ -83,7 +83,7 @@ working directory에서 git 명령어 중 하나인  git add 를 사용하면, �
 Git은 분산형 버전 관리 시스템인데, aka 프로그램이라고 반복해서 설명했다.
 그러나, 기존의 프로그램들은 대부분 많은 사람들이 보편적으로 사용할 수 있도록 GUI를 기반으로 해서 서비스를 제공한다. 그러나 Git은 CLI를 기반으로 사용한다. 그렇기에 다른 일반적인 프로그램과 달리 Git은 사용하기 위해서는 ‘공부’를 조금 더 많이 해야한다는 특징이 있다. `CLI`는 종류가 여러가지 존재하고, 그 중에서 `LINUX 명령어` 에 대해서는 간략하게 명령어만 별도의 마크다운`.md`으로 정리해 두었다.
 
-
+>  [LINUX 명령어들.md](https://github.com/1-Hee/TIL/blob/master/LINUX%20%EB%AA%85%EB%A0%B9%EC%96%B4%EB%93%A4.md)
 
 
 
@@ -207,7 +207,7 @@ Changes to be committed:
 
 ### 2.2.9. git commit --amend
 
-  git에서 commit을 한 뒤에 갑자기 내가 작성한 commit message가 마음에 안들 수 있다. 그렇다면 이것을 수정하려면 새롭게 수정해서 또 commit을 해야할까? 정답은 아니다. git에서는 이러한 상황에 대비하여 commit이 된 이후라도 메세지를 수정할 수 있는 명령어를 제공하며 그것이 바로 `git commit --amend` 이다. 단, 이때 주의할 것은 이 명령어를 쓰면 무조건 Vim 편집기가 나타나게 되는데, 사용법은 위에 설명한 만큼 당황하지 않고 메세지를 편집 후 빠져나와주면 생각보다 쉽게 메세지를 편집할 수 있다.
+  git에서 commit을 한 뒤에 갑자기 내가 작성한 commit message가 마음에 안들 수 있다. 그렇다면 이것을 수정하려면 새롭게 수정해서 또 commit을 해야할까? 정답은 아니다. git에서는 이러한 상황에 대비하여 commit이 된 이후라도 메세지를 수정할 수 있는 명령어를 제공하며 그것이 바로 `git commit --amend` 이다. 단, 이때 주의할 것은 이 명령어를 쓰면 무조건 Vim 편집기가 나타나게 되는데, 사용법은 위 챕터 중 `2.2.3. git commit –m`에서 설명한 것을 따라하면 되므로 당황하지 않고 메세지 편집 후 빠져나와주면 쉽게 메세지를 편집할 수 있다.
 
 ![0714S5](https://github.com/1-Hee/TIL/blob/master/source/0714s5.PNG?raw=true)
 
@@ -215,11 +215,51 @@ Changes to be committed:
 
 
 
+### 2.2.10. git remote add origin \<git hub repo adress\>
+
+ 로컬 repository에서 git commit이 끝났다면, 이제는 GitHub와 같은 서비스를 이용해 프로젝트를 온라인으로 업로드 할 차례이다. 그렇다면 이제 한 가지 의문이 떠오를 수 있다. `로컬에 있는 내 git 폴더를 어떻게 업로드하지?` 당연하게도 이 또한 명령어가 있다. GitHub에 회원가입 후 나의 계정에 귀속된 **Repository**를 만들면 아래와 같은 페이지를 볼 수 있다. GitHub는 이 페이지에서 친절하게(?)  어떻게 연결할지 가이드라인을 바로 보여주고 있다.
+
+
+
+
+
+
+
+
+
+
+
+```
+DESKTOP MINGW64 /d/.test (master)
+$ git remote -V
+error: unknown switch `V'
+usage: git remote [-v | --verbose]
+   or: git remote add [-t <branch>] [-m <master>] [-f] [--tags | --no-tags] [--mirror=<fetch|push>] <name> <url>
+   or: git remote rename [--[no-]progress] <old> <new>
+   or: git remote remove <name>
+   or: git remote set-head <name> (-a | --auto | -d | --delete | <branch>)
+   or: git remote [-v | --verbose] show [-n] <name>
+   or: git remote prune [-n | --dry-run] <name>
+   or: git remote [-v | --verbose] update [-p | --prune] [(<group> | <remote>)...]
+   or: git remote set-branches [--add] <name> <branch>...
+   or: git remote get-url [--push] [--all] <name>
+   or: git remote set-url [--push] <name> <newurl> [<oldurl>]
+   or: git remote set-url --add <name> <newurl>
+   or: git remote set-url --delete <name> <url>
+
+    -v, --verbose         be verbose; must be placed before a subcommand
+
+```
+
+
+
+
+
 ### 2.2.10. git remote -v
 
 >  GitHub와 Local의 Bridge를 확인하는 방법
 
-간단히 설명하겠다. 이 명령어를 사용하면 현재 폴더가 어느 GitHub와 Link되었는지 확인 가능하다.
+간단히 코드로 설명하겠다. 이 명령어를 사용하면 현재 폴더가 어느 GitHub와 Link되었는지 확인 가능하다.
 
 ```
 DESKTOP MINGW64 /d/.test (master)
@@ -232,7 +272,7 @@ origin  https://github.com/사용자명/레포지토리.git (push)
 
 ### 2.2.11. git clone
 
-추가 편집...
+ Git은 개발자들 사이에 서로 협업하기 위한 **Tool** 이고 GitHub는 개발자들 사이에 서로 협업할 수 있도록 '온라인' 상으로 파일 업로드 및 다운로드를 가능하게 하는 편의를 제공하는 **서비스(Service)**이다. 그래서 GitHub에 어떤 프로젝트 폴더가 업로드 되어 있다면, 최초 생성한 사람 뿐만 아니라 나중에 합류하는 다른 사람도 참여할 수 있다. 이 때 다른 개발자의 로컬(Local) 컴퓨터 디렉토리에 프로젝트 폴더를 다운로드 하게 해주는 명령어가 `git clone`이다.  
 
 
 
