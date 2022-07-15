@@ -1,5 +1,3 @@
-
-
 # 1. What’s Git?
 
 - Git : 리누스 토르발스가 개발한 분산형 버전 관리 시스템(VCS).
@@ -94,7 +92,13 @@ Git은 분산형 버전 관리 시스템인데, aka 프로그램이라고 반복
 ### 2.2.1. git init
  git init은 git에 의해 버전관리를 받지 않는` local directory ` 중에서 개발자(사용자)가 이제부터 해당 local directory는 git으로 버전관리를 하겠다고  선언하는 과정이라고 설명할 수 있다.
 
-![0714S1](https://github.com/1-Hee/TIL/blob/master/source/0714s1.PNG?raw=true)
+```
+DESKTOP MINGW64 /d/.gitTest
+$ git init
+Initialized empty Git repository in D:/.gitTest/.git/
+```
+
+
 
  그래서, git init은 사용할 때 두 가지를 주의하여 사용한다. 첫째, git을 통해 버전관리 하겠음을 ‘선언’하는 것이므로 최초 1회만 사용해야한다. 둘째, 가급적 `Home directory`에는 `git init`하는 것을 삼가야한다. 두 번째 조건을 주의해야하는 이유는 홈 디렉토리에 `git init` 할 경우, 버전 관리시 온갖 잡다한 것들이 다 관리될 수 있기 때문이다 (비효율적, 비합리적).
 
@@ -103,7 +107,20 @@ Git은 분산형 버전 관리 시스템인데, aka 프로그램이라고 반복
 ### 2.2.2. git add
  `git add`는 working directory에 있는 파일이나 폴더를 git repository에 올리기 전 단계인 staging area에 올려 놓는 명령어이다. 
 
-![0714S3](https://github.com/1-Hee/TIL/blob/master/source/0714s3.PNG?raw=true)
+```
+DESKTOP MINGW64 /d/.gitTest (master)
+$ git add .
+
+DESKTOP MINGW64 /d/.gitTest (master)
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   a.txt
+```
 
 >  `🤔 git은 왜 바로 git repository에 올리지 않는 것일까?`
 
@@ -117,14 +134,89 @@ git은 `git commit –m` 이라는 명령어를 통해 변경 이력의 특이�
 
 
 
-![0714S4](https://github.com/1-Hee/TIL/blob/master/source/0714s4.PNG?raw=true)
+```
+DESKTOP MINGW64 /d/.gitTest (master)
+$ git commit
+```
 
-![0714S5](https://github.com/1-Hee/TIL/blob/master/source/0714s5.PNG?raw=true)
+
+
+```
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#       new file:   a.txt
+#
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+<g Study/6. ssafy/gitTest/.git/COMMIT_EDITMSG [unix] (07:48 16/07/2022)1,0-1 All
+<amming Study/gitTest/.git/COMMIT_EDITMSG" [unix] 11L, 227B
+
+```
 
 > ▲ `git commit –m` 양식을 지키지 않았을 때 자동으로 호출되는 Vim 화면.
 git은 커밋 메시지를 작성하는 것을 ‘강제’하고 있기 때문에 위와 같은 화면이 등장한다.
 
 
+
+```
+root
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#       new file:   a.txt
+#
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+< Study/gitTest/.git/COMMIT_EDITMSG[+] [unix] (07:48 16/07/2022)1,4 All
+:wq
+
+```
+
+>**INSERT 모드**로 커밋 메세지를 입력하고, `ESC` 키를 누른 후 명령어 `:wq`를 입력하면 미로(?)에서 탈출 가능하다.
+>
+>
 
 이때 탈출하는 방법은 ‘커밋메세지 작성’하는 것이다. 이 화면에서 커밋 메시지 작성하는 방법은
 
@@ -135,29 +227,111 @@ git은 커밋 메시지를 작성하는 것을 ‘강제’하고 있기 때문�
 
 
 
+```
+DESKTOP MINGW64 /d/.gitTest (master)
+$ git commit
+[master (root-commit) 8fe2cd1] root
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 a.txt
+```
+
+
+
+
+
 ### 2.2.4. git status
  현재 디렉토리에서의 git의 현재상태를 알려주는 명령어이다. 다른 명령어 사진을 보면 중간중간 `git status`가 입력된 것을 볼 수 있는데, git status는 이처럼 git의 각 중간 단계에서 현재 상태를 점검하는 데 쓰이는 명령어이기에 자주 사용되었다.
 
 ### 2.2.5. git log
 이 명령어는 조금 특별하다(?). 바로 앞 `git status`와 다르게 **git workflow**가 **repository**에 도달하면 쓸 수 있기 때문이다. 이 명령어는 최소 1회 **commit이 일어난 경우** 에만 사용 가능하며 최근에 업데이트된 ‘변경이력’을 보여준다.
 
-![0714S5](https://github.com/1-Hee/TIL/blob/master/source/0714s9.PNG?raw=true)
+```
+DESKTOP MINGW64 /d/.gitTest (master)
+$ git log
+commit 8fe2cd1eb5d5998ec077fca24dafaef9afd426b0 (HEAD -> master)
+Author: 1-Hee <onehee9710@gmail.com>
+Date:   Sat Jul 16 07:48:07 2022 +0900
+
+    root
+
+```
+
+
 
  또한, 노란색 글씨로 알 수 없는 영어와 숫자가 합쳐진 문자열을 보여주는데, 이것은 해당 `repository`의 `해쉬값`이며 고유하다 (컴퓨터마다 다르다). 이 ‘해쉬값’은 해당 repository에서 과거의 파일을 보거나 할 때 사용할 **key value** 로써 사용한다. 하지만 주의할 것은 이 행위는 ‘ROLLBACK’시킨다는 의미가 아니다.
 
-### 2.2.6. git log --online
+### 2.2.6. git log --oneline
 
- `2.3.5. git log`를 참조하면, `git log` 라는 명령어는 다소(?) 상세한 정보들을 표시해준다. 그런데, Git은 버전관리 프로그램이기 때문에 당연히 해당 폴더에서 작업을 하면 할 수록 시간의 흐름과 함께 점점 `commit` 내역들이 쌓여갈 것이다. 만약 이 상황에 대해 어떤 해결책이 없다면 개발자들은 개발을 시작한지 오래된 폴더에서 `git pull`을 하고 `git log` 를 찍으면 고작 한 줄짜리 명령어가 자칫하면 수십, 수백 줄의 결과 코드를 반환할 수 있으니 항상 걱정이 가득해야 할지도 모르겠다. 하지만 다행히 똑똑한 개발자들은 그렇게 해두지 않았다. git log의 코드가 누적되어 양이 많아지면 일정 수준 이하로 자동으로 편집을 해버리며, 그 화면은 다음과 같다.
+ `2.3.5. git log`를 참조하면, `git log` 라는 명령어는 다소(?) 상세한 정보들을 표시해준다. 그런데, Git은 버전관리 프로그램이기 때문에 당연히 해당 폴더에서 작업을 하면 할 수록 시간의 흐름과 함께 점점 `commit` 내역들이 쌓여갈 것이다. 만약 이 상황에 대해 어떤 해결책이 없다면 개발자들은 개발을 시작한지 오래된 폴더에서 `git pull`을 하고 `git log` 를 찍으면 고작 한 줄짜리 명령어가 자칫하면 수십, 수백 줄의 결과 코드를 반환할 수 있으니 항상 걱정이 가득해야 할지도 모르겠다. 하지만 다행히 똑똑한 개발자들은 그렇게 해두지 않았다. git log의 코드가 누적되어 양이 많아지면 다음과 같은 화면을 볼 수 있다.
 
 
 
-![0715s1](https://github.com/1-Hee/TIL/blob/master/source/0715s1.PNG?raw=true)
+```
+DESKTOP MINGW64 /d/.gitTest (master)
+$ git log
+commit e6470c71eaaf4ac96ff4674076068382a7af76c2 (HEAD -> master)
+Author: 1-Hee <email@adress.com>
+Date:   Sat Jul 16 07:54:14 2022 +0900
 
-![0715s2](https://github.com/1-Hee/TIL/blob/master/source/0715s2.PNG?raw=true)
+    test2
+
+commit ccdd7ae9d835f6def86aee23393b057c511cc2ae
+Author: 1-Hee <email@adress.com>
+Date:   Sat Jul 16 07:54:00 2022 +0900
+
+    test2
+
+commit c44e7cd1156a2eb185b27a9496aa363045635698
+Author: 1-Hee <email@adress.com>
+Date:   Sat Jul 16 07:53:51 2022 +0900
+
+    test2
+
+commit 8ea15ff2c7330e8fdc9ede22398bdc20c4d2cd26
+Author: 1-Hee <email@adress.com>
+Date:   Sat Jul 16 07:53:43 2022 +0900
+
+    test2
+
+commit ea5925de510cb7bba5daf54bdef62df3be764d80
+:
+```
+
+> log의 길이가 길어져서 Vim 처럼 무시무시한(?) 콜론(:)이 등장해버린 모습이다.
 
 
 
  코드가 길어지면 위의 이미지와 같이 log 내역이 전부다 나타나지 않는다. 저 화면에서는 콘솔창이 마치 먹통(?)이된 것 같은 상황이 발생하는데, 이때에는 어떤 입력이나 스크롤도 맘대로 되지 않아서 패닉에 빠질 수 있다. 이때에도 **Vim 에디터** 에서 했던 것처럼 `wq` 를 입력하면 빠져나올 수 있다.
+
+
+
+```
+commit ea5925de510cb7bba5daf54bdef62df3be764d80
+
+DESKTOP MINGW64 /d/.gitTest (master)
+$
+```
+
+> `wq` 명령어를 정상적으로 입력하면 위와 같이 잘 빠져나오는 것을 확인할 수 있다.
+
+
+
+`wq` 명렁어를 사용해서 위와 같이 성공적으로 빠져나올 수도 있지만, 그런 상황을 떠나서 log가 많이 중첩되면 한눈에 정보를 파악하기 어려워질 수 있다. 그래서 간략히 해쉬 값과 commit message를 확인할 수 있는 명령어도 존재하는데 그것이 바로 `git log --oneline`이다. 이 명령어를 입력하면 아래와 같이 간략하게 정보를 표시해주어 보기 한결 더 쉬워진다.
+
+
+
+```
+WONHEE JO@DESKTOP-C9L1NBB MINGW64 /d/.Programming Study/6. ssafy/gitTest (master)
+$ git log --oneline
+e6470c7 (HEAD -> master) test2
+ccdd7ae test2
+c44e7cd test2
+8ea15ff test2
+ea5925d test1
+8fe2cd1 root
+```
+
+> `git log --oneline`을 입력했을 때는 무시무시한(?) 화면은 나타나지 않고, 해쉬값과 커밋메세지만 간략히 나타났다.
 
 
 
@@ -173,15 +347,36 @@ git은 커밋 메시지를 작성하는 것을 ‘강제’하고 있기 때문�
 
 위의 질문에 대한 해답은 바로 여기서 얻을 수 있다. 바로 git의 **해쉬값** 을 통해서 지난 버전들에 접근하고 관리할 수 있다. local에서 `git commit -m` 을 통해 변경 이력을 저장했다면, 그 이력은 고유한 값인 **해쉬값**을 가진다. 이 해쉬 값은 컴퓨터마다 전혀 다르고 '고유'하기 때문에 겹칠 수가 없다. 그래서 이 값을 기준으로 해당 폴더나 파일의 버전 관리를 할 수 있게 된다.
 
+```
+DESKTOP MINGW64 /d/.gitTest (master)
+$ git checkout ea5925d
+Note: switching to 'ea5925d'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at ea5925d test1
+
+DESKTOP MINGW64 /d/.gitTest ((ea5925d...)) # ←여기 값이 달라짐
+```
+
+> git checkout 해쉬값을 입력했을 때 볼 수 있는 git bash 창이다. 컴퓨터 디렉토리 우측 괄호의 값이 변했다.
 
 
-![0715S7](https://github.com/1-Hee/TIL/blob/master/source/0715s7.PNG?raw=true)
 
->  git checkout 해쉬값을 입력했을 때 볼 수 있는 git bash 창이다. 컴퓨터 디렉토리 우측 괄호의 값이 변했다.
-
-
-
- `git checkout 해쉬값` 은 위의 사진과 같이 과거의 파일을 접근할 수 있게 해주며, 현재 파일에 스크린 샷으로 담지 않았지만, 특정 해쉬값을 입력하면 그 해쉬값에 해당하는 변경이력 까지 파일을 복원한다. (미래의 이력은 안보이게 해줌) 이때 유의할 것은 이 명령어가 그동안의 `commit` 이력을 `ROLLBACK`하는 것이 아니라는 점이다.
+ `git checkout 해쉬값` 은 위의 사진과 같이 과거의 파일을 접근할 수 있게 해주며, 현재 파일에 스크린 샷으로 담지 않았지만, 특정 해쉬값을 입력하면 그 해쉬값에 해당하는 변경이력 까지 파일을 복원한다. (미래의 이력은 안보이게 해줌) 이때 유의할 것은 이 명령어가 그동안의 `commit` 이력을 `ROLLBACK`하는 것이 아니라는 점이다. `git checkout` 이후 현재 상태로 돌아오고 싶다면 `git checkout <branch>`를 해주면 된다. 홀로 하는 개인 프로젝트라면 `git checkout master`를 입력하면 대부분 원래의 경로로 돌아온다(아니라면 현재 branch 확인 필요).
 
 
 
@@ -192,7 +387,7 @@ git은 커밋 메시지를 작성하는 것을 ‘강제’하고 있기 때문�
 
 
 ```
-DESKTOP MINGW64 /d/.test (master)
+DESKTOP MINGW64 /d/.gitTest (master)
 $ git status
 On branch master
 Changes to be committed:
@@ -209,9 +404,43 @@ Changes to be committed:
 
   git에서 commit을 한 뒤에 갑자기 내가 작성한 commit message가 마음에 안들 수 있다. 그렇다면 이것을 수정하려면 새롭게 수정해서 또 commit을 해야할까? 정답은 아니다. git에서는 이러한 상황에 대비하여 commit이 된 이후라도 메세지를 수정할 수 있는 명령어를 제공하며 그것이 바로 `git commit --amend` 이다. 단, 이때 주의할 것은 이 명령어를 쓰면 무조건 Vim 편집기가 나타나게 되는데, 사용법은 위 챕터 중 `2.2.3. git commit –m`에서 설명한 것을 따라하면 되므로 당황하지 않고 메세지 편집 후 빠져나와주면 쉽게 메세지를 편집할 수 있다.
 
-![0714S5](https://github.com/1-Hee/TIL/blob/master/source/0714s5.PNG?raw=true)
+```
+WONHEE JO@DESKTOP-C9L1NBB MINGW64 /d/.Programming Study/6. ssafy/gitTest (master)
+$ git commit --amend
+```
 
-> `2.3.3. git commit –m` 챕터에서 다룬 Vim 에디터  사진이다. `git commit --amend`를 입력하면 직전 커밋 내역에 대한 Vim 에디터가 활성화 된다.
+> `git commit --amend` 명령어를 위와 같이 입력하면 최근의 commit 내역에 대한 Vim 편집기가 뜬다.
+
+```
+test2
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Sat Jul 16 07:54:14 2022 +0900
+#
+# On branch master
+# Changes to be committed:
+#       modified:   a.txt
+#
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+D:/.gitTest/.git/COMMIT_EDITMSG [unix] (08:09 16/07/2022)               		  1,1 All
+"D:/.gitTest/.git/COMMIT_EDITMSG" [unix] 11L, 258B
+```
+
+> `2.3.3. git commit –m` 챕터에서 다룬 Vim 에디터  코드이다. `git commit --amend`를 입력하면 직전 커밋 내역에 대한 Vim 에디터가 활성화 된다. 여기서도 똑같이 `I` 키를 눌러서 **INSERT 모드**로 전환하고 메세지를 편집한 후 `ESC` 키를 눌러서 **명령어 모드**로 전환한 뒤 `:wq` 명령어를 입력하면 기존 디렉토리로 돌아온다.
 
 
 
@@ -221,35 +450,9 @@ Changes to be committed:
 
 
 
+![0715s8](https://github.com/1-Hee/TIL/blob/master/source/0715s8.PNG?raw=true)
 
-
-
-
-
-
-
-
-```
-DESKTOP MINGW64 /d/.test (master)
-$ git remote -V
-error: unknown switch `V'
-usage: git remote [-v | --verbose]
-   or: git remote add [-t <branch>] [-m <master>] [-f] [--tags | --no-tags] [--mirror=<fetch|push>] <name> <url>
-   or: git remote rename [--[no-]progress] <old> <new>
-   or: git remote remove <name>
-   or: git remote set-head <name> (-a | --auto | -d | --delete | <branch>)
-   or: git remote [-v | --verbose] show [-n] <name>
-   or: git remote prune [-n | --dry-run] <name>
-   or: git remote [-v | --verbose] update [-p | --prune] [(<group> | <remote>)...]
-   or: git remote set-branches [--add] <name> <branch>...
-   or: git remote get-url [--push] [--all] <name>
-   or: git remote set-url [--push] <name> <newurl> [<oldurl>]
-   or: git remote set-url --add <name> <newurl>
-   or: git remote set-url --delete <name> <url>
-
-    -v, --verbose         be verbose; must be placed before a subcommand
-
-```
+> GitHub에서 처음 repository를 생성하면 볼 수 있는 화면이다. 나는 분명 폴더를 만들었는데, 이 화면이 나와서 당황했다면 걱정할 필요 없다 잘 만든 것이다. GitHub는 repository 생성 후 다음 step을 헷갈려할 개발자들을 위해 친절하게 앞으로 어떤 명령어를 입력하는게 필요할지 위의 사진처럼 안내하고 있다.
 
 
 
@@ -259,7 +462,7 @@ usage: git remote [-v | --verbose]
 
 >  GitHub와 Local의 Bridge를 확인하는 방법
 
-간단히 코드로 설명하겠다. 이 명령어를 사용하면 현재 폴더가 어느 GitHub와 Link되었는지 확인 가능하다.
+`2.2.10. git remote add origin <git hub repo adress>`의 명령어를 입력하지 않았다면, 당연히 GitHub와 Local Git 저장소 사이에의 연결은 이루어지지 않는다(요청하지 않았는데 연결되는 것도 좀 이상할 것 같다). 그래서 내가 GitHub에 잘 연결했는지 확인할 수 있는 명령어가 ` git remote -v` 이다. 아래의 두 블럭에 각각 정상적으로 잘 연결되었을 때와 명령어를 입력하지 않았을 때의 결과창을 옮겨두었다.
 
 ```
 DESKTOP MINGW64 /d/.test (master)
@@ -267,6 +470,18 @@ $ git remote -v
 origin  https://github.com/사용자명/레포지토리.git (fetch)
 origin  https://github.com/사용자명/레포지토리.git (push)
 ```
+
+> 정상적으로 GitHub와 연결되어 fetch와 push 정보가 잘 나타나는 결과창이다.
+
+
+
+```
+DESKTOP MINGW64 /d/.test (master)
+$ git remote -v
+
+DESKTOP MINGW64 /d/.test (master)
+```
+> GitHub에서 repository를 생성한 뒤 `git remote add origin <git hub repo adress>`를 입력하지 않아서 아무런 정보도 나타나지 않는 모습이다.
 
 
 
