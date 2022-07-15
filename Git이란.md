@@ -90,7 +90,7 @@ Git은 분산형 버전 관리 시스템인데, aka 프로그램이라고 반복
 ### 2.3.1. git init
  git init은 git에 의해 버전관리를 받지 않는` local directory ` 중에서 개발자(사용자)가 이제부터 해당 local directory는 git으로 버전관리를 하겠다고  선언하는 과정이라고 설명할 수 있다.
 
-![S1](https://github.com/1-Hee/TIL/blob/master/source/0714s1.PNG?raw=true)
+![0714S1](https://github.com/1-Hee/TIL/blob/master/source/0714s1.PNG?raw=true)
 
  그래서, git init은 사용할 때 두 가지를 주의하여 사용한다. 첫째, git을 통해 버전관리 하겠음을 ‘선언’하는 것이므로 최초 1회만 사용해야한다. 둘째, 가급적 `Home directory`에는 `git init`하는 것을 삼가야한다. 두 번째 조건을 주의해야하는 이유는 홈 디렉토리에 `git init` 할 경우, 버전 관리시 온갖 잡다한 것들이 다 관리될 수 있기 때문이다 (비효율적, 비합리적).
 
@@ -99,7 +99,7 @@ Git은 분산형 버전 관리 시스템인데, aka 프로그램이라고 반복
 ### 2.3.2. git add
  `git add`는 working directory에 있는 파일이나 폴더를 git repository에 올리기 전 단계인 staging area에 올려 놓는 명령어이다. 
 
-![S3](https://github.com/1-Hee/TIL/blob/master/source/0714s3.PNG?raw=true)
+![0714S3](https://github.com/1-Hee/TIL/blob/master/source/0714s3.PNG?raw=true)
 
 >  `🤔 git은 왜 바로 git repository에 올리지 않는 것일까?`
 
@@ -113,9 +113,9 @@ git은 `git commit –m` 이라는 명령어를 통해 변경 이력의 특이�
 
 
 
-![S4](https://github.com/1-Hee/TIL/blob/master/source/0714s4.PNG?raw=true)
+![0714S4](https://github.com/1-Hee/TIL/blob/master/source/0714s4.PNG?raw=true)
 
-![S5](https://github.com/1-Hee/TIL/blob/master/source/0714s5.PNG?raw=true)
+![0714S5](https://github.com/1-Hee/TIL/blob/master/source/0714s5.PNG?raw=true)
 
 > ▲ `git commit –m` 양식을 지키지 않았을 때 자동으로 호출되는 Vim 화면.
 git은 커밋 메시지를 작성하는 것을 ‘강제’하고 있기 때문에 위와 같은 화면이 등장한다.
@@ -137,7 +137,7 @@ git은 커밋 메시지를 작성하는 것을 ‘강제’하고 있기 때문�
 ### 2.3.5. git log
 이 명령어는 조금 특별하다(?). 바로 앞 `git status`와 다르게 **git workflow**가 **repository**에 도달하면 쓸 수 있기 때문이다. 이 명령어는 최소 1회 **commit이 일어난 경우** 에만 사용 가능하며 최근에 업데이트된 ‘변경이력’을 보여준다.
 
-![S5](https://github.com/1-Hee/TIL/blob/master/source/0714s9.PNG?raw=true)
+![0714S5](https://github.com/1-Hee/TIL/blob/master/source/0714s9.PNG?raw=true)
 
  또한, 노란색 글씨로 알 수 없는 영어와 숫자가 합쳐진 문자열을 보여주는데, 이것은 해당 `repository`의 `해쉬값`이며 고유하다 (컴퓨터마다 다르다). 이 ‘해쉬값’은 해당 repository에서 과거의 파일을 보거나 할 때 사용할 **key value** 로써 사용한다. 하지만 주의할 것은 이 행위는 ‘ROLLBACK’시킨다는 의미가 아니다.
 
@@ -147,6 +147,108 @@ git은 커밋 메시지를 작성하는 것을 ‘강제’하고 있기 때문�
 
 
 
+![0715s1](https://github.com/1-Hee/TIL/blob/master/source/0715s1.PNG?raw=true)
+
+![0715s2](https://github.com/1-Hee/TIL/blob/master/source/0715s2.PNG?raw=true)
+
+
+
+ 코드가 길어지면 위의 이미지와 같이 log 내역이 전부다 나타나지 않는다. 저 화면에서는 콘솔창이 마치 먹통(?)이된 것 같은 상황이 발생하는데, 이때에는 어떤 입력이나 스크롤도 맘대로 되지 않아서 패닉에 빠질 수 있다. 이때에도 **Vim 에디터** 에서 했던 것처럼 `wq` 를 입력하면 빠져나올 수 있다.
+
+
+
+### 2.3.7. git checkout 해쉬값
+
+ 그동안 `git add` , `git commit - m` , `git push origin master` 등을 잘 사용했고, `git log`를 입력해서 `commit` 내역을 확인하는 것까지 순조로웠다면 아래와 같은 의문이 들 수 있을 것 같다.
+
+
+
+>  git이 버전관리를 한다는데, 도대체 어떻게 버전관리로 한다는 거지? 어떻게 버전별로 접근을 하는 걸까?
+
+
+
+위의 질문에 대한 해답은 바로 여기서 얻을 수 있다. 바로 git의 **해쉬값** 을 통해서 지난 버전들에 접근하고 관리할 수 있다. local에서 `git commit -m` 을 통해 변경 이력을 저장했다면, 그 이력은 고유한 값인 **해쉬값**을 가진다. 이 해쉬 값은 컴퓨터마다 전혀 다르고 '고유'하기 때문에 겹칠 수가 없다. 그래서 이 값을 기준으로 해당 폴더나 파일의 버전 관리를 할 수 있게 된다.
+
+
+
+![0715S7](https://github.com/1-Hee/TIL/blob/master/source/0715s7.PNG?raw=true)
+
+>  git checkout 해쉬값을 입력했을 때 볼 수 있는 git bash 창이다. 컴퓨터 디렉토리 우측 괄호의 값이 변했다.
+
+
+
+ `git checkout 해쉬값` 은 위의 사진과 같이 과거의 파일을 접근할 수 있게 해주며, 현재 파일에 스크린 샷으로 담지 않았지만, 특정 해쉬값을 입력하면 그 해쉬값에 해당하는 변경이력 까지 파일을 복원한다. (미래의 이력은 안보이게 해줌) 이때 유의할 것은 이 명령어가 그동안의 `commit` 이력을 `ROLLBACK`하는 것이 아니라는 점이다.
+
+
+
+### 2.3.8.  git rm --cached 
+
+ git에 업로드를 하다 보면, 파일을 잘못 올려버린 경우가 생길 수 있다. `git add`를 사용하면 파일은 곧바로 `staging area`에 올라가는 것이지 곧바로 `repository`에 올라가는 것이 아니기 때문에 잘못 올라간 파일을 취소 시킬 수 있다. 여기서 다시한번 `staing area`의 진가가 발휘하는 대목인 것 같다.
+
+
+
+```
+DESKTOP MINGW64 /d/.test (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   b.txt
+
+```
+
+` git add`를 입력하고 bash 창을 확인하면 위와 같은 결과 코드를 볼 수 있다. 이때 git은 친절하게 파일을 올렸다는 '정보'와 잘못 올린 경우를 대비하여 취소하는 명령어를 같이 안내해주는데, 잘못 올린 파일을 취소하는 명령어가 바로 `git rm --cached ` 이다. 이 명령어 뒤에 삭제하고 싶은 파일명을 입력하면 add된 것이 취소된다.
+
+
+
+### 2.3.9. git commit --amend
+
+  git에서 commit을 한 뒤에 갑자기 내가 작성한 commit message가 마음에 안들 수 있다. 그렇다면 이것을 수정하려면 새롭게 수정해서 또 commit을 해야할까? 정답은 아니다. git에서는 이러한 상황에 대비하여 commit이 된 이후라도 메세지를 수정할 수 있는 명령어를 제공하며 그것이 바로 `git commit --amend` 이다. 단, 이때 주의할 것은 이 명령어를 쓰면 무조건 Vim 편집기가 나타나게 되는데, 사용법은 위에 설명한 만큼 당황하지 않고 메세지를 편집 후 빠져나와주면 생각보다 쉽게 메세지를 편집할 수 있다.
+
+![0714S5](https://github.com/1-Hee/TIL/blob/master/source/0714s5.PNG?raw=true)
+
+> `2.3.3. git commit –m` 챕터에서 다룬 Vim 에디터  사진이다. `git commit --amend`를 입력하면 직전 커밋 내역에 대한 Vim 에디터가 활성화 된다.
+
+
+
+### 2.3.10. git remote -v
+
+>  GitHub와 Local의 Bridge를 확인하는 방법
+
+간단히 설명하겠다. 이 명령어를 사용하면 현재 폴더가 어느 GitHub와 Link되었는지 확인 가능하다.
+
+```
+DESKTOP MINGW64 /d/.test (master)
+$ git remote -v
+origin  https://github.com/사용자명/레포지토리.git (fetch)
+origin  https://github.com/사용자명/레포지토리.git (push)
+```
+
+
+
+### 2.3.11. git clone
+
+추가 편집...
+
+
+
+### 2.3.12. git pull
+
+추가 편집...
+
+
+
+## 2.4. GitHub의 추가 기능
+
+### 2.4.1.  .gitignore
+
+.gitignore는 개발의 편의성을 위해 대부분의 파일들은 GitHub에 업로드 하지만, 때로는 API 키나 기타 개인 정보등 민감한 정보들은 온라인에 함부로 올라가는 것을 개발자들은 원하지 않을 것이다. 그래서 제공하는 옵션(?)이 .gitignore라고 할 수 있다. 이 파일은 텍스트 파일인데, 특이한 것이 이 파일에 파일의 이름이 명기되면 git에 의해 추적 받지 않는다. 이를 통해 민감한 정보에 대해 편하게 관리할 수 있다. 너무 좋은 이 파일은 결점이 없을 것 같지만, 한 가지 주의해야할 것이 있는데 .gitignore는 GitHub에 업로드할 때 설정을 확정 짓는 것이기 때문에 `git pull`이나 `git clone`을 통해 파일을 내려받으면 기존에 작성해둔 설정 값이 사라져버릴 수 있다(대참사...). 그러므로 이미 명령어를 입력했어도 수정할 수 있는 다른 git 명령어들과 다르게 주의를 기울여야 한다. 그래서 .gitignore 파일은 같은 팀인 개발자끼리는 서로 `무조건` 자세하게 공유해야 한다.
+
+
+
+### 2.4.2. README.md
+
+`.md` 확장자를 가지는 파일은 마크다운 파일로 지금 작성하고 있는 이 문서 또한 마크다운 문서이다. 이 문서는 aka 블로그나 MS사의 words와 같이 텍스트를 편집하고 꾸밀 수 있는 태그들을 지원하는데 그중에서 `README.md`라고 되어 있는 마크다운 파일은 해당 깃 허브 폴더에서 미리보기로 바로 보이게 된다. 그래서 어떤 프로젝트의 개요나 오픈 소스 라이브러리의 기능을 글로 설명할 때 많이 사용한다.
 
 
 
@@ -157,5 +259,21 @@ git은 커밋 메시지를 작성하는 것을 ‘강제’하고 있기 때문�
 
 `2.3.1. git init` 카테고리에서 `git init`을 사용하면서 주의해야 할 상황을 한 가지 설명했었는데, 이 챕터에서는 Git에서 발생할 수 있는 문제상황과 Git과 GitHub에서 발생할 수 있는 여러 문제 상황을 다뤄보고자 한다.
 
-## 3.1. git log가 무수히 쌓이는 경우
+
+
+## 3.1. 이미 git init을 한 폴더 아래의 자식(Sub) 폴더에 또 git init을 하는 경우
+
+> ` git init` 이라는 명령어 자체는 초기에 1회만 사용하는 명령어이고, 이것을 하위 디렉토리에서 사용할 수 없도록 막혀있진 않지만 하위 디렉토리에 또다시 git init을 할 경우 `Sub Module Issue`로 인해 문제가 발생할 수 있다.
+
+
+
+## 3.2. etc...
+
+> 추후 공부하면서 채워나갈 예정
+
+
+
+
+
+
 
