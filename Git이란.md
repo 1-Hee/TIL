@@ -62,7 +62,7 @@ git init은 git에 의해 버전관리를 받지 않는 local directory 중에�
 개발자(사용자)가 이제부터 해당 local directory는 git으로 버전관리를 하겠다고,
 선언하는 과정이라고 설명할 수 있다.
 
-![S1](\source\0714s1.png)
+![S1](./source/0714s1.png)
 
 그래서, git init은 사용할 때 두 가지를 주의하여 사용한다.
  첫째, git을 통해 버전관리 하겠음을 ‘선언’하는 것이므로 최초 1회만 사용해야한다.
