@@ -237,10 +237,27 @@ $ git commit
 
 
 
-
-
 ### 2.2.4. git status
+
  현재 디렉토리에서의 git의 현재상태를 알려주는 명령어이다. 다른 명령어 사진을 보면 중간중간 `git status`가 입력된 것을 볼 수 있는데, git status는 이처럼 git의 각 중간 단계에서 현재 상태를 점검하는 데 쓰이는 명령어이기에 자주 사용되었다.
+
+```
+DESKTOP MINGW64 /d/.gitTest (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   a.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+DESKTOP MINGW64 /d/.gitTest (master)
+```
+
+> `git status` 명령어를 입력하면 단계별 진행상황을 확인 가능하다. 위의 코드 블럭은 파일을 수정한 뒤 `git status`를 입력한 결과이다. `git status`는 stage와 stage의 진행 상황 별로 다른 결과 코드를 보여준다.
+
+
 
 ### 2.2.5. git log
 이 명령어는 조금 특별하다(?). 바로 앞 `git status`와 다르게 **git workflow**가 **repository**에 도달하면 쓸 수 있기 때문이다. 이 명령어는 최소 1회 **commit이 일어난 경우** 에만 사용 가능하며 최근에 업데이트된 ‘변경이력’을 보여준다.
@@ -489,11 +506,52 @@ DESKTOP MINGW64 /d/.test (master)
 
  Git은 개발자들 사이에 서로 협업하기 위한 **Tool** 이고 GitHub는 개발자들 사이에 서로 협업할 수 있도록 '온라인' 상으로 파일 업로드 및 다운로드를 가능하게 하는 편의를 제공하는 **서비스(Service)**이다. 그래서 GitHub에 어떤 프로젝트 폴더가 업로드 되어 있다면, 최초 생성한 사람 뿐만 아니라 나중에 합류하는 다른 사람도 참여할 수 있다. 이 때 다른 개발자의 로컬(Local) 컴퓨터 디렉토리에 프로젝트 폴더를 다운로드 하게 해주는 명령어가 `git clone`이다.  
 
+```
+DESKTOP MINGW64 ~/Desktop (master)
+$ git clone https://github.com/1-Hee/Test.git
+Cloning into 'Test'...
+remote: Enumerating objects: 21, done.
+remote: Counting objects: 100% (21/21), done.
+remote: Compressing objects: 100% (7/7), done.
+remote: Total 21 (delta 0), reused 21 (delta 0), pack-reused 0
+Receiving objects: 100% (21/21), done.
+
+DESKTOP MINGW64 ~/Desktop (master)
+```
+
+> git bash 창에서 GitHub의 repository의 주소를 복사해 `git clone <address>` 명령어를 입력해주면 다른 컴퓨터에서도 얼마든지 파일을 다운로드 할 수 있다. 단, 깃 주소만 알면 누구나 무분별하게 다운로드 하는 것을 막기 위해 GitHub에서는 타인이 나의 repsitory를 clone하고자 한다면 계정정보나 토큰을 요구한다.
 
 
-### 2.2.12. git pull
 
-추가 편집...
+### 2.2.12. git pull (origin \<branch\>)
+
+`git pull (origin <branch>)`명령어는 이미 `git clone`을 통해 repository를 다운로드 한 후에 다른 개발자라던가 다른 곳에서 개발했던 내역을 나의 개인 노트북이나 데스크톱에서도 업데이트해주어 싱크를 맞출 수 있게 해주는 명령어이다.
+
+```
+DESKTOP MINGW64 /d/.gitTest (master)
+$ git pull origin master
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 656 bytes | 24.00 KiB/s, done.
+From https://github.com/1-Hee/Test
+ * branch            master     -> FETCH_HEAD
+   796f513..7e72368  master     -> origin/master
+Updating 796f513..7e72368
+Fast-forward
+ a.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+DESKTOP MINGW64 /d/.gitTest (master)
+
+```
+
+>`git pull origin <branch>` 명령어를 통해 업데이트 내역을 다운받은 결과를 보여주는 bash창이다.
+
+
+
+ 명령어 뒤에 ()를 붙인 이유는 그 뒤 부분은 적지 않아도 branch가 무엇인지 알 수 있는 경우(e.g. branch가 master 1가지인 경우) 에는 git이 알아서 해당 branch에서 데이터를 다운로드하기에 생략이 가능해서이다. 만약 GitHub를 처음 다루거나 익숙치 않을 경우에는 ❗ **가급적** `git pull origin <branch>` 전체를 다 입력하길 강력 추천한다(여러 명이 협업하는 repository에서는 이상한 branch로 뒤집어 쓴다던가 하는 대참사 발생 가능).
 
 
 
@@ -530,9 +588,33 @@ DESKTOP MINGW64 /d/.test (master)
 
 
 
-## 3.2. etc...
+## 3.2. Collision
 
-> 추후 공부하면서 채워나갈 예정
+ 어떤 프로젝트 파일을 `git init`을 통해 버전관리를 시작하고, GitHub에 정상적으로 연결한 뒤, 작업을 할 때에는 한 가지 주의해야할 부분이 생긴다. 우리는 앞서 질리도록 git에 대해서 다루었기 때문에 git은 버전관리를 하는 프로그램이라는 사실은 알고 있다. 만약 하나의 GitHub repository에서 두 명 이상의 개발자가 개발을 하다보면 서로 다른 시점에 commit을 하고 업데이트를 할 때, `GitHub에서는 이 commit 들의 순서를 어떻게 짜맞추는 걸까?` 하는 의문이 생길 수 있다. 이러한 경우 `해쉬값`이 중추적인 역할을 해서 교통정리가 가능하다. 이 상황에 대해서 조금 더 첨언을 하자면 가급적 서로 같은 시점에서 출발해 서로 다른 코드를 커밋하는 상황은 지양해야 한다. 말로써는 설명이 어려우니 그림을 첨부하였다.
+
+
+
+
+
+개발자가 git을 
+
+
+
+git을 local에서 init하고 remote에 연결한 후에 로컬에서 편집하고 remote 편집하면
+
+각각에서 서로 다른 해쉬 값을 갖는 'commit = 변경이력'이 생김.
+
+그래서 이 이력이 서로 다르면 git hub에서는 차이를 감지하고 push할 경우 reject함.
+
+이때 개발자는 이 상황을 해결해야하고, 
+
+git hub는 conflict, collision상황을 local에서 해결하도록 하는데
+
+해결법은 결국 다시 파일 수정, 저장, git add, git commit의 단계로 해결됨. 
+
+이 때 수정된 파일을 commit하게 되면 충돌된 파일은 merge되고 하나로 합쳐짐.
+
+
 
 
 
