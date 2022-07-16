@@ -461,7 +461,13 @@ D:/.gitTest/.git/COMMIT_EDITMSG [unix] (08:09 16/07/2022)               		  1,1 
 
 
 
-### 2.2.10. git remote add origin \<git hub repo adress\>
+### 2.2.10. git config
+
+추가예정...
+
+
+
+### 2.2.11. git remote add origin \<git hub repo adress\>
 
  로컬 repository에서 git commit이 끝났다면, 이제는 GitHub와 같은 서비스를 이용해 프로젝트를 온라인으로 업로드 할 차례이다. 그렇다면 이제 한 가지 의문이 떠오를 수 있다. `로컬에 있는 내 git 폴더를 어떻게 업로드하지?` 당연하게도 이 또한 명령어가 있다. GitHub에 회원가입 후 나의 계정에 귀속된 **Repository**를 만들면 아래와 같은 페이지를 볼 수 있다. GitHub는 이 페이지에서 친절하게(?)  어떻게 연결할지 가이드라인을 바로 보여주고 있다.
 
@@ -475,7 +481,7 @@ D:/.gitTest/.git/COMMIT_EDITMSG [unix] (08:09 16/07/2022)               		  1,1 
 
 
 
-### 2.2.10. git remote -v
+### 2.2.12. git remote -v
 
 >  GitHub와 Local의 Bridge를 확인하는 방법
 
@@ -502,7 +508,7 @@ DESKTOP MINGW64 /d/.test (master)
 
 
 
-### 2.2.11. git clone
+### 2.2.13. git clone
 
  Git은 개발자들 사이에 서로 협업하기 위한 **Tool** 이고 GitHub는 개발자들 사이에 서로 협업할 수 있도록 '온라인' 상으로 파일 업로드 및 다운로드를 가능하게 하는 편의를 제공하는 **서비스(Service)**이다. 그래서 GitHub에 어떤 프로젝트 폴더가 업로드 되어 있다면, 최초 생성한 사람 뿐만 아니라 나중에 합류하는 다른 사람도 참여할 수 있다. 이 때 다른 개발자의 로컬(Local) 컴퓨터 디렉토리에 프로젝트 폴더를 다운로드 하게 해주는 명령어가 `git clone`이다.  
 
@@ -523,7 +529,7 @@ DESKTOP MINGW64 ~/Desktop (master)
 
 
 
-### 2.2.12. git pull (origin \<branch\>)
+### 2.2.14. git pull (origin \<branch\>)
 
 `git pull (origin <branch>)`명령어는 이미 `git clone`을 통해 repository를 다운로드 한 후에 다른 개발자라던가 다른 곳에서 개발했던 내역을 나의 개인 노트북이나 데스크톱에서도 업데이트해주어 싱크를 맞출 수 있게 해주는 명령어이다.
 
@@ -555,7 +561,7 @@ DESKTOP MINGW64 /d/.gitTest (master)
 
 
 
-## 2.3. GitHub의 추가 기능
+## 2.3. GitHub의 추가 옵션
 
 ### 2.3.1.  .gitignore
 
@@ -590,35 +596,112 @@ DESKTOP MINGW64 /d/.gitTest (master)
 
 ## 3.2. Collision
 
- 어떤 프로젝트 파일을 `git init`을 통해 버전관리를 시작하고, GitHub에 정상적으로 연결한 뒤, 작업을 할 때에는 한 가지 주의해야할 부분이 생긴다. 우리는 앞서 질리도록 git에 대해서 다루었기 때문에 git은 버전관리를 하는 프로그램이라는 사실은 알고 있다. 만약 하나의 GitHub repository에서 두 명 이상의 개발자가 개발을 하다보면 서로 다른 시점에 commit을 하고 업데이트를 할 때, `GitHub에서는 이 commit 들의 순서를 어떻게 짜맞추는 걸까?` 하는 의문이 생길 수 있다. 이러한 경우 `해쉬값`이 중추적인 역할을 해서 교통정리가 가능하다. 이 상황에 대해서 조금 더 첨언을 하자면 가급적 서로 같은 시점에서 출발해 서로 다른 코드를 커밋하는 상황은 지양해야 한다. 말로써는 설명이 어려우니 그림을 첨부하였다.
+ 어떤 프로젝트 파일을 `git init`을 통해 버전관리를 시작하고, GitHub에 정상적으로 연결한 뒤, 작업을 할 때에는 한 가지 주의해야할 부분이 생긴다. 우리는 앞서 질리도록 git에 대해서 다루었기 때문에 git은 버전관리를 하는 프로그램이라는 사실은 알고 있다. 만약 하나의 GitHub repository에서 두 명 이상의 개발자가 개발을 하다보면 서로 다른 시점에 commit을 하고 업데이트를 할 때, `GitHub에서는 이 commit 들의 순서를 어떻게 짜맞추는 걸까?` 하는 의문이 생길 수 있다. 이러한 경우 `해쉬값`이 중추적인 역할을 해서 교통정리가 가능하다. 이 상황에 대해서 조금 더 첨언을 하자면 가급적 서로 같은 시점에서 출발해 서로 다른 코드를 커밋하는 상황은 지양해야 한다. 말로써는 설명이 부족할 수 있어서 이미지를 첨부하였다.
 
 
 
+![0715s9](https://github.com/1-Hee/TIL/blob/master/source/0715s9.PNG?raw=true)
 
-
-개발자가 git을 
-
-
-
-git을 local에서 init하고 remote에 연결한 후에 로컬에서 편집하고 remote 편집하면
-
-각각에서 서로 다른 해쉬 값을 갖는 'commit = 변경이력'이 생김.
-
-그래서 이 이력이 서로 다르면 git hub에서는 차이를 감지하고 push할 경우 reject함.
-
-이때 개발자는 이 상황을 해결해야하고, 
-
-git hub는 conflict, collision상황을 local에서 해결하도록 하는데
-
-해결법은 결국 다시 파일 수정, 저장, git add, git commit의 단계로 해결됨. 
-
-이 때 수정된 파일을 commit하게 되면 충돌된 파일은 merge되고 하나로 합쳐짐.
+> 위 그림은 `HOME` 과 `Other Desktop`에서 `commit`한 내역의 순서가 맞지 않아 충돌이 발생한 상황이다. GitHub는 평행세계(?)를 방지하기 위해서 위와 같이 서로 다른 해쉬 값을 갖는 commit이 업로드 되면 나중에 들어온 commit 내역에 대해서 reject 하고, local 수준에서 해결하도록 한다.
 
 
 
+git으로 `commit`을 하면 각각의 `해쉬값`은 고유하기 때문에, 생성 시점과 GitHub 업로드 시점에 따라서 전후 관계가 결정된다. git은 분산 버전관리 프로그램이 때문에, Server와 같은 `GitHub`, 최초에 git을 생성하고 관리하기 시작한 `HOME` 디렉토리, 그리고 1개 이상의 `다른 컴퓨터(Others)`에서 해쉬값의 순서 흐름이 같아야 한다. 분산버전관리를 하는 목적을 생각해보면 이것이 굉장히 당연한 이야기가 되는데, 만약 이렇게 서로 순서의 흐름이 맞지 않아 sink가 다르다면 그것은 과연 분산되어 관리된다고 할 수 있을까? 또한, 분산버전관리로 인해 하나의 요소가 `KNOCK OUT` 되더라도 `BACK UP` 하는 것이 불가능해질 수 도 있을 것이다. 그러므로 개발자가 git을 사용할 때에는 이러한 전체적인 구조와 흐름을 생각하며 사용하는 자세가 필요하다. 위처럼 `Conflict`된 상황이 발생하면, GitHub에서는 로컬 수준에서 해결할 수 있도록 가이드라인을 bash 창에 보여준다.
 
 
 
+```
+DESKTOP MINGW64 /d/.gitTest (master)
+$ git push origin master
+To https://github.com/1-Hee/Test.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/1-Hee/Test.git'      
+hint: Updates were rejected because the remote contains work that you do    
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes   
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+DESKTOP MINGW64 /d/.gitTest (master)
+$
+```
+
+> 위에서 설명한 것처럼 서로 `push`한  `commit`의 값이 상이하게 되면 `conflict`가 발생하게 되고 `commit`이 `reject` 되게 된다.
 
 
 
+### 3.2.1. CONFLICT 해결방법 ❓ 
+
+GitHub에서는 `conflict` 가 발생하면 local에서 해결하도록 하는데, 네가지 단계만 거치면 해결이 가능하다.
+
+
+
+1.  `git pull origin <branch>`
+2.  `git add <file>`
+3.  `git  commit -m`
+4.  `git push (origin <branch>)`
+
+
+
+ `Conflict` 상황이 발생하면, 위와 같이 네 가지 명령어를 입력하게 되면 해결이 가능한데, 여기서 주목할 부분은 충돌 경고를 본 이후에 `1. git pull origin <branch>` 를 하게 되면 git은 요상한(?) 텍스트를 보여준다.
+
+```
+a
+b
+cc
+dd
+hello world!
+yallo
+whats'up!
+hello pow!
+<<<<<<< HEAD
+yellow pants
+=======
+bluehat!
+>>>>>>> 4312589c2eb4e95c2bdcefd5c609a8403b060b8f
+```
+
+> `git pull origin <branch>`를 한 이후에 볼 수 있는 텍스트 이다.
+
+위에서 <<<<< HEAD 부터 ==== 까지 해당하는 부분은 현재 Local이 commit한 부분을 보여주고, === 이후부터 >>> 4312589c... 까지는 GitHub에 다른 곳에서 올린 commit 부분을 보여준다. 특수기호로 마킹된 부분을 제외하고 나머지는 서로 같은 부분이라 특수기호로 구분되지 않았는데, 처음보는 특수기호라 당황할 수 있지만 그럴 것 없이 개발자가 직접 GitHub에게 교통정리만 해주면 상황은 정리되며 문제는 해결된다. 특수기호를 포함해서 충돌이 일어난 부분(특수기호의 시작부터 해쉬값으로 보이는 부분의 끝까지)을 편집해주고 `2. git add <file>` 부터 `4.  git push (origin <branch>)` 까지 차근차근 잘 수행해주면 충돌이 난 부분은 합쳐지고(merge) 정상적으로 GitHub에 `push`되는 것을 확인할 수 있다.
+
+
+
+```
+DESKTOP MINGW64 /d/.gitTest (master)
+$ git pull origin master
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 663 bytes | 23.00 KiB/s, done.
+From https://github.com/1-Hee/Test
+ * branch            master     -> FETCH_HEAD
+   7e72368..4312589  master     -> origin/master
+Auto-merging a.txt
+CONFLICT (content): Merge conflict in a.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+DESKTOP MINGW64 /d/.gitTest (master|MERGING)
+$ git add .
+
+DESKTOP MINGW64 /d/.gitTest (master|MERGING)
+$ git commit -m 'conflict'
+[master b751464] conflict
+
+DESKTOP MINGW64 /d/.gitTest (master)
+$ git push origin master
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (6/6), 525 bytes | 525.00 KiB/s, done.
+Total 6 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/1-Hee/Test.git
+   4312589..b751464  master -> master
+
+DESKTOP MINGW64 /d/.gitTest (master)
+```
+
+> `conflict` 발생 시 위에 명기한 명령어를 순서대로 잘 입력하였더니, GitHub에 `push`까지 정상적으로 잘 된 모습을 확인할 수 있다.
