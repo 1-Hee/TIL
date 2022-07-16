@@ -504,7 +504,7 @@ $ git remote -v
 
 DESKTOP MINGW64 /d/.test (master)
 ```
-> GitHub에서 repository를 생성한 뒤 `git remote add origin <git hub repo adress>`를 입력하지 않아서 아무런 정보도 나타나지 않는 모습이다.
+> GitHub에서 repository를 생성한 뒤 `git remote add origin <git hub repo address>`를 입력하지 않아서 아무런 정보도 나타나지 않는 모습이다.
 
 
 
