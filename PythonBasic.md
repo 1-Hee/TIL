@@ -89,7 +89,7 @@ print(math.isclose(a,b))
 > 
 > input()을 통해 콘솔로 숫자를 입력 받아도 그 값의 자료형은 문자열이 됩니다.
 
-##### 문자열의 사용 규칙
+#### 문자열의 사용 규칙
 
 1. 문자열을 하나의 기호로 묶어주어야 합니다. ('' or "")
 
@@ -103,29 +103,29 @@ print(math.isclose(a,b))
    
    - 줄바꿈이나 캐리지 리턴 같이 특수한 기능을 사용해야 할 때 사용.
 
-##### 문자열의 연산
+#### 문자열의 연산
 
  숫자형에서 덧셈은 두 수의 합을 구하는 연산입니다. 그러나, 문자열의 덧셈은 문자열을 합치는 연산을 합니다. 마찬가지로 곱셈은 해당 횟수만큼 문자열을 반복해서 합치는 연산을 합니다.
 
-##### String Interpolation, 문자열과 변수를 같이 사용하는 경우
+#### String Interpolation, 문자열과 변수를 같이 사용하는 경우
 
 > 문자열과 변수를 같이 출력하고자 할때에는 여러 방법들이 있습니다.
 
-##### case 1. %-formatting
+#### case 1. %-formatting
 
 ```python
 name = 'python'
 print('Hello, %s' % name)
 ```
 
-##### case 2. str.format()
+#### case 2. str.format()
 
 ```python
 name = 'Kim'
 print('Hello, {}! ', .format(name))
 ```
 
-##### case 3. f-string, (python 3.6 이후)
+#### case 3. f-string, (python 3.6 이후)
 
 ```python
 name = 'Kim'
@@ -134,7 +134,7 @@ print(f'Hello, {name}')
 
 > f-string은 {} 속 변수 뒤에 콜론(:)을 통해 여러 옵션을 적용할 수 있다.
 
-##### 컴퓨터는 어떻게 시간을 이해할까?
+#### 컴퓨터는 어떻게 시간을 이해할까?
 
 >  컴퓨터는 1970년 1월 1일을 그리니치 천문대의 시간을 기준으로 숫자를 세서 현재까지 숫자를 계산하고 있습니다.
 
@@ -237,7 +237,7 @@ Dictionary의 key는 변경불가능한 데이터입니다.
 
 >  사용자가 의도하지 않아서 파이썬 내부적으로 자료형을 변환하는 경우
 
-##### 암시적 형변환 : bool & Numeric
+#### 암시적 형변환 : bool & Numeric
 
 ```python
 True + 3 # 4
