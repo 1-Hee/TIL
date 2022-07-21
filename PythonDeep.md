@@ -310,37 +310,34 @@ print(count)
 ```python
 def func1(parameter):
     print(parameter)
-    
-func1(Argument)
 
+func1(Argument)
 ```
 
  함수는 `def`를 통해서 쉽게 만들 수 있습니다. 이러한 함수는 소괄호 안에 값을 받을 수도 있고 안받을 수도 있는데요. 값을 받고 안받고에 따라서 받으면 `Value Returnnig Fucntion`, 안받으면 `Void Function`이라고 구분짓습니다. `Void Function`은 매개변수가 없이 사용하는 함수이고, `Value Returnnig Fucntion`는 매개 변수를 받아야하는 함수입니다. 
 
-
 ### 2.2.3. return
+
  함수에서의 모든 계산이나 작업이 종료된 이후에 함수를 종료하고 값을 전달하는데 쓰는 것이 `return`입니다. `return`뒤에 값을 적으면 그 값을 반환하고, 아무것도 적지 않으면 함수를 그냥 종료하게 됩니다. 단, return은 함수 하나당 한 번만 쓸 수 있으며, 돌려줄 수 있는 값은 한 종류 입니다. 여기서 한종류라고 표현한 이유는 `return 1` 이렇게 작성하면 1이라는 숫자 하나만 돌려주게 되지만, `return [1,2,3]`을 하게 되면 2개 이상의 값을 돌려줄 수 있기 때문입니다. 
- 
 
 ### 2.2.4. parameter와 argument
+
  함수는 선언할 때 `parameter`를 선언 할 지 안할지 정할 수 있습니다. `parameter`를 선언했다면, 후속 코드에서 함수를 사용할 때 함수에 `parameter`를 입력하면 그 입력값은 `argument`가 됩니다.
- 
- ```python
- # parameter와 argument
- 
- def print_input(s): #여기에서 `s`는 parameter 입니다.
-     print(s)
+
+```python
+# parameter와 argument
+
+def print_input(s): #여기에서 `s`는 parameter 입니다.
+    print(s)
 
 print_input(s) # 여기에서 's'는 argument 입니다.
- 
- ```
- 
- ### Positional Argument
- 
-  함수의 Argument는 입력된 순서에 따라 미리 함수에 선언한 변수로 값이 할당되는데, 이것을 `Positional Argument`라고 합니다. 그러나 개발자가 함수 안의 값을 특정짓고 맵핑하고 싶을 때는 `Keyword Arguments`를 사용할 수 있습니다.
-  
-```python
+```
 
+### Positional Argument
+
+  함수의 Argument는 입력된 순서에 따라 미리 함수에 선언한 변수로 값이 할당되는데, 이것을 `Positional Argument`라고 합니다. 그러나 개발자가 함수 안의 값을 특정짓고 맵핑하고 싶을 때는 `Keyword Arguments`를 사용할 수 있습니다.
+
+```python
 def add(x, y):
     return x + y
 
@@ -351,28 +348,27 @@ add(2, y=3) # 허용, 에러 X
 add(x=2, 5) # 에러발생 : 함수에 argment를 적어줄 때, 
 # `keyword Argument`로 적는 순간 그 후에 값들은 모두 
 # `Keyword Argument`여야 하기에 오류를 발생시킵니다.
-
-
 ```
- 
+
 ### 2.2.5. 정해지지 않은 여러개의 Argumets 처리
+
 > `print()` 함수가 여러개 인자를 받을 수 있는 이유?
 
 ### 가변 인자(\*)
 
  `print()` 함수는 `paramter`로 애스터리스크(\*)를 사용하기 때문에 가능합니다. 함수 내의 Parameter에 \* 를 붙이면 가변인자가 됩니다. 가변인자는 값으 1개든 5개든 입력된 값에 따라서 유동적으로 크기를 조절합니다. 그래서 `print()` 함수는 여러 개의 인자를 받을 수 있습니다. 
- 
- ```python
+
+```python
 # 가변 인자와 패킹과 언패킹
 # 패킹 : 여러개의 데이터를 묶어서 변수에 할당하기
 numbers = (1,2,3,4,5) # 패킹
 
 # 언패킹 : 배열의 값을 여러 변수에 할당하기
 a, b, c, d, e = numbers
- 
- ```
+```
 
 ### 가변 키워드 인자(**kwargs)
+
 > 몇 개의 키워드를 받을지 모르는 함수 정의할 때 유용
 
 ```python
@@ -382,8 +378,6 @@ def family(**kwargs):
 
 family(fater='아부지', mother = '어무니')
 # 가변 키워드 인자를 사용하면 변수명 = 값 양식으로 값을 입력하면 되며 key값은 ''로 묶지 않습니다.
-        
-
 ```
 
 ## 2.5. 함수의 범위
@@ -399,8 +393,8 @@ global, nonglobal
 
 built-in, map, filter, zip, lambda, recursive function
 
-
 ## 2.7. 모듈
+
 > 다양한 기능을 하나의 파일로 묶은 것.
 
 모듈 < 패키지 < 라이브러리
@@ -411,10 +405,8 @@ built-in, map, filter, zip, lambda, recursive function
 
 모듈과 패키지를 관리하는 관리자 = pip
 
-
 패키지의 활용 공간 (가상환경)
 모듈 사용 코드..
-
 
 ## 2.8. 파이썬 표준 라이브러리
 
@@ -423,11 +415,10 @@ pip install package
 .
 .
 
-
 ## 2.9. 사용자 모듈과 패키지
+
 > 사용자가 직접 파이썬 파일로 모듈을 만들고 적용하고 싶을 때
 
-
-
 ## 2.10. 가상환경
+
 > 파이썬 표준 라이브러리가 아닌 외부 패키지와 모듈을 사용하는 경우
