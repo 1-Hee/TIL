@@ -96,7 +96,7 @@ while a < 5:
 print("덧셈 끝")
 ```
 
-📌 [복합연산자]([TIL/Operator.md at master · 1-Hee/TIL · GitHub](https://github.com/1-Hee/TIL/blob/master/Operator.md)) 와 함께 while문을 사용하면, 종료 조건을 만드는데 유용하며 자주 씁니다.
+📌 [복합연산자](https://github.com/1-Hee/TIL/blob/master/Operator.md) 와 함께 while문을 사용하면, 종료 조건을 만드는데 유용하며 자주 씁니다.
 
 ### 
 
