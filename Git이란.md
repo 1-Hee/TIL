@@ -407,7 +407,7 @@ git config --global user.email "USER@EMAIL.COM"
 여기서 `--global` 옵션은 git 환경에서 전역으로 사용하겠음을 의미하는 것으로, 세부 파일에서만 통용되는 계정을 설정하고 싶다면 아래와 같이 `--global`  옵션을 제거하고 사용해도 된다. (이 때에는 전역으로 사용 x..)
 
 ```git
-git config user.name "USER_NAME"
+git config user.name USER_NAME
 git config user.email "USER@EMAIL.COM"
 ```
 
