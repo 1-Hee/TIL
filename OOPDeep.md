@@ -45,6 +45,8 @@
 
 [출처 : OOP의 네가지 특징(추상화/캡슐화/상속/다형성)](https://velog.io/@0sunset0/OOP%EC%9D%98-%EB%84%A4%EA%B0%80%EC%A7%80-%ED%8A%B9%EC%A7%95%EC%B6%94%EC%83%81%ED%99%94%EC%BA%A1%EC%8A%90%ED%99%94%EC%83%81%EC%86%8D%EB%8B%A4%ED%98%95%EC%84%B1)
 
+----------------------------------------
+
 # 3. 객체지향 개발의 5가지 원리 : SOLID
 
 ## 1. 단일 책임의 원칙 (SRP, Single Responsibility Principle)
