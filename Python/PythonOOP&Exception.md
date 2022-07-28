@@ -10,12 +10,12 @@
 ## vs 절차지향 프로그래밍
 > 데이터와 기능(메서드)를 분리하고, 추상화된 구조(인터페이스)로 제공하는 것.
 
-![]()
+![0726s1](https://github.com/1-Hee/TIL/blob/master/source/0726s1.PNG?raw=true)
 
 ### 객채지향이 필요한가? 
 현실세계가 너무 복잡해져서 이것을 프로그래밍 설계에 반영하기에는 절차지향이 너무 어려워졌기 때문입니다.
 
-![]()
+![0726s2](https://github.com/1-Hee/TIL/blob/master/source/0726s2.PNG?raw=true)
 
 ## 1. 객체지향의 핵심 개념
 장점 
